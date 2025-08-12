@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PGRKAM Capstone Project — Smart Chatbot</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; line-height:1.5; color:#111; margin:24px; background:#f7f9fb; }
+    .container { max-width:980px; margin:0 auto; background:#fff; padding:28px; box-shadow:0 6px 22px rgba(20,30,60,0.08); border-radius:8px; }
+    h1 { margin-top:0; font-size:26px; color:#0b4471; }
+    h2 { font-size:18px; color:#0b4471; margin-bottom:8px; }
+    p, li { font-size:14px; color:#222; }
+    ul { margin:8px 0 16px 20px; }
+    .section { margin-bottom:20px; }
+    .timeline-table { width:100%; border-collapse:collapse; margin-top:8px; }
+    .timeline-table th, .timeline-table td { border:1px solid #e1e7ee; padding:8px 10px; text-align:left; font-size:13px; }
+    .timeline-table th { background:#f0f6fb; color:#0b4471; }
+    .ref { font-size:13px; margin:4px 0; }
+    .muted { color:#556; font-size:13px; }
+    .github { display:inline-block; padding:8px 12px; background:#0b4471; color:#fff; text-decoration:none; border-radius:5px; margin-top:6px; }
+    .note { font-size:13px; color:#444; margin-top:6px; }
+    .small { font-size:12px; color:#666; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PGRKAM Capstone Project — Smart Chatbot</h1>
+
+    <div class="section">
+      <h2>Problem statement</h2>
+      <p>
+        The Employment Department at present has a digital platform <a href="https://www.pgrkam.com" target="_blank">www.pgrkam.com</a> and a mobile application to provide services to job seekers and employers. The portal comprises multiple modules such as private sector jobs, government jobs, self-employment avenues, foreign jobs, foreign study, counseling, guidance, induction into armed forces, and job melas. Currently, there is no interactive guidance mechanism to direct users to the exact module that resolves their queries. Users must manually navigate across multiple modules to find answers.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Objectives</h2>
+      <ul>
+        <li>Develop a multilingual smart chatbot leveraging Large Language Models (LLMs) such as GPT-3 to provide intelligent, context-aware assistance on the PGRKAM platform.</li>
+        <li>Enable both text and voice query handling in Punjabi, Hindi, and English, focusing on job search, skill development, and foreign counseling.</li>
+        <li>Incorporate personalized job recommendations by analyzing user interaction history and stated preferences.</li>
+        <li>Enhance accessibility by integrating a multilingual screen-reading module to support visually impaired users.</li>
+        <li>Ensure cross-platform compatibility for seamless experience on smartphones and laptops.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Background and related works</h2>
+      <ul>
+        <li>Large Language Models (LLMs) such as GPT-3 have advanced conversational AI, enabling context-aware and natural interactions.</li>
+        <li>AI chatbots are adopted in employment services to improve job search efficiency and deliver personalized recommendations.</li>
+        <li>Multilingual conversational agents increase accessibility for linguistically diverse and low-literacy populations.</li>
+        <li>Existing government job portals in India generally do not integrate multilingual, voice-enabled AI assistants tailored for regional languages.</li>
+        <li>The identified gap supports development of a PGRKAM Smart Chatbot to provide intelligent, accessible, and personalized employment assistance.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Analysis of Problem Statement</h2>
+      <ul>
+        <li>Users must navigate multiple modules to locate relevant services or information on PGRKAM.</li>
+        <li>This leads to increased time consumption, reduced efficiency, and a suboptimal user experience.</li>
+        <li>Absence of an intelligent guidance mechanism limits access for individuals with limited digital literacy or visual impairments.</li>
+        <li>There is a requirement for an integrated, context-aware system to streamline interaction with the platform.</li>
+        <li>A multilingual, voice-enabled AI chatbot with personalization capabilities can effectively address these limitations.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Innovation and Novel Contributions</h2>
+      <ul>
+        <li>Multilingual conversational interface (Punjabi, Hindi, English) to increase regional reach.</li>
+        <li>Voice-enabled interaction for speech input and audio responses.</li>
+        <li>Personalized recommendations driven by user history and preferences.</li>
+        <li>Accessibility integration including a screen-reading module for visually impaired users.</li>
+        <li>Seamless integration across web and mobile PGRKAM platforms.</li>
+        <li>Context-aware navigation that directs users to relevant services without manual browsing.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>GitHub</h2>
+      <p class="muted">Repository (replace the placeholder with your repository URL):</p>
+      <a class="github" href="https://github.com/your-username/pgrkam-smart-chatbot" target="_blank">https://github.com/your-username/pgrkam-smart-chatbot</a>
+    </div>
+
+    <div class="section">
+      <h2>Timeline (Gantt-style table)</h2>
+      <table class="timeline-table" aria-label="Project timeline">
+        <thead>
+          <tr>
+            <th>Phase / Task</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Review-1 (CA-1): Problem Statement, Proposal & Objectives</td>
+            <td>15-Aug-2025</td>
+            <td>20-Aug-2025</td>
+            <td>Initial submission & presentation</td>
+          </tr>
+          <tr>
+            <td>Literature Survey & Requirement Analysis</td>
+            <td>21-Aug-2025</td>
+            <td>31-Aug-2025</td>
+            <td>Collect datasets, APIs, language resources</td>
+          </tr>
+          <tr>
+            <td>Review-2 (CA-2): Literature & Model Design</td>
+            <td>01-Sep-2025</td>
+            <td>10-Sep-2025</td>
+            <td>Model architecture and design</td>
+          </tr>
+          <tr>
+            <td>Prototype Development (Backend & Frontend)</td>
+            <td>11-Sep-2025</td>
+            <td>30-Sep-2025</td>
+            <td>API integration, dialog flows</td>
+          </tr>
+          <tr>
+            <td>Review-3 (CA-3): Progress Presentation</td>
+            <td>20-Sep-2025</td>
+            <td>30-Sep-2025</td>
+            <td>Prototype demo</td>
+          </tr>
+          <tr>
+            <td>Testing, Personalization & Accessibility Features</td>
+            <td>01-Oct-2025</td>
+            <td>20-Oct-2025</td>
+            <td>Screen reader, voice tests, recommender tuning</td>
+          </tr>
+          <tr>
+            <td>Review-4 (CA-4): Progress Presentation</td>
+            <td>10-Oct-2025</td>
+            <td>20-Oct-2025</td>
+            <td>Integration demo</td>
+          </tr>
+          <tr>
+            <td>Final Testing & Report Preparation</td>
+            <td>21-Oct-2025</td>
+            <td>31-Oct-2025</td>
+            <td>Documentation, final fixes</td>
+          </tr>
+          <tr>
+            <td>Final VIVA (CA-5): Submission & Presentation</td>
+            <td>01-Nov-2025</td>
+            <td>05-Nov-2025</td>
+            <td>Final report and demo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>IEEE References</h2>
+      <div class="ref">
+        [1] T. B. Brown et al., “Language Models are Few-Shot Learners,” NeurIPS, 2020. [Online]. Available: <a href="https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf" target="_blank">https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf</a>
+      </div>
+      <div class="ref">
+        [2] M. Allouch, A. Azaria, and R. Azoulay, “Conversational Agents: Goals, Technologies, Vision and Challenges,” Sensors, vol. 21, no. 24, art. 8448, 2021. [Online]. Available: <a href="https://www.mdpi.com/1424-8220/21/24/8448" target="_blank">https://www.mdpi.com/1424-8220/21/24/8448</a>
+      </div>
+      <div class="ref">
+        [3] S. Kusal et al., “AI-Based Conversational Agents: A Scoping Review From Technologies to Future Directions,” IEEE Access, 2022. [Online]. Available: <a href="https://doi.org/10.1109/ACCESS.2022.3201144" target="_blank">https://doi.org/10.1109/ACCESS.2022.3201144</a>
+      </div>
+      <div class="ref">
+        [4] N. M. Radziwill and M. C. Benton, “Evaluating Quality of Chatbots and Intelligent Conversational Agents,” arXiv preprint, 2017. [Online]. Available: <a href="https://arxiv.org/abs/1704.04579" target="_blank">https://arxiv.org/abs/1704.04579</a>
+      </div>
+      <div class="ref">
+        [5] J. Gao, M. Galley, and L. Li, “Neural Approaches to Conversational AI,” arXiv preprint, 2018. [Online]. Available: <a href="https://arxiv.org/abs/1809.08267" target="_blank">https://arxiv.org/abs/1809.08267</a>
+      </div>
+    </div>
+
+    <p class="small">Note: Replace the GitHub placeholder link with your repository URL. You can copy this file to your project folder and use it as an index page or as content for your PPT notes.</p>
+  </div>
+</body>
+</html>
