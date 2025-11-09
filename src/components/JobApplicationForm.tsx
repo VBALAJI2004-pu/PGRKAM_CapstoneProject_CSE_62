@@ -53,9 +53,15 @@ export const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobTitle
       const data = await response.json();
 
       if (response.ok) {
-        alert('Job application submitted successfully!');
         console.log('Application successful:', data);
-        onApplicationSubmit(true); // Indicate success
+        // Reset form
+        setName('');
+        setEmail('');
+        setPhone('');
+        setResumeFile(null);
+        setCoverLetterFile(null);
+        // Call callback to show thank you message in chatbot
+        onApplicationSubmit(true);
       } else {
         alert(`Application failed: ${data.error || 'Unknown error'}`);
         console.error('Application failed:', data);
@@ -63,7 +69,7 @@ export const JobApplicationForm: React.FC<JobApplicationFormProps> = ({ jobTitle
       }
     } catch (error) {
       console.error('Error submitting application:', error);
-      alert('An error occurred while submitting your application.');
+      alert('An error occurred while submitting your application. Please try again.');
       onApplicationSubmit(false); // Indicate failure
     }
   };

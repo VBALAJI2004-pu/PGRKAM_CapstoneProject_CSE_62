@@ -8,6 +8,7 @@ import { searchJobs, getJobById, getAllCategories, getJobsByCategory, Job } from
 import logo from '@/assets/pgrkam-logo.png';
 import { JobApplicationForm } from './JobApplicationForm';
 import { LanguageContext, AuthContext } from '../App'; // Import LanguageContext and AuthContext
+import { Link } from 'react-router-dom'; // Import Link
 
 interface Message {
   id: string;
@@ -30,6 +31,8 @@ enum ChatStage {
 const translations = {
   en: {
     welcome: "Hello! I'm PGRKAM Assistant. I can help you find jobs, training programs, and career guidance in English, Punjabi, and Hindi. How can I assist you today?",
+    welcomeUser: (username: string) => `Hello, ${username}! I'm PGRKAM Assistant. How can I assist you today?`, // Personalized welcome
+    pleaseLogin: "Please login to chat.", // Login prompt
     placeholder: "Type your message or click mic to speak...",
     listening: "Listening...",
     searchJobs: "I found some relevant opportunities for you:",
@@ -47,11 +50,11 @@ const translations = {
     confirmChangeMind: "Are you sure you want to go back to the job listings? You will lose the current application form.",
     yesChooseOtherJob: "Yes, choose another job",
     noStayOnForm: "No, stay on this form",
-    pleaseLoginToChat: "Please login to chat to access this feature.",
-    loginToChat: "Login to Chat",
   },
   hi: {
-    welcome: "नमस्ते {username}! मैं PGRKAM सहायक हूं। मैं आपको अंग्रेजी, पंजाबी और हिंदी में नौकरी, प्रशिक्षण कार्यक्रम और करियर मार्गदर्शन खोजने में मदद कर सकता हूं। आज मैं आपकी कैसे सहायता कर सकता हूं?",
+    welcome: "नमस्ते! मैं PGRKAM सहायक हूं। मैं आपको अंग्रेजी, पंजाबी और हिंदी में नौकरी, प्रशिक्षण कार्यक्रम और करियर मार्गदर्शन खोजने में मदद कर सकता हूं। आज मैं आपकी कैसे सहायता कर सकता हूं?",
+    welcomeUser: (username: string) => `नमस्ते, ${username}! मैं PGRKAM सहायक हूं। आज मैं आपकी कैसे सहायता कर सकता हूं?`, // Personalized welcome
+    pleaseLogin: "कृपया चैट करने के लिए लॉग इन करें।", // Login prompt
     placeholder: "अपना संदेश टाइप करें या बोलने के लिए माइक क्लिक करें...",
     listening: "सुन रहा हूं...",
     searchJobs: "मैंने आपके लिए कुछ प्रासंगिक अवसर पाए:",
@@ -69,11 +72,11 @@ const translations = {
     confirmChangeMind: "क्या आप वापस नौकरी सूची पर जाना चाहते हैं? आप वर्तमान आवेदन प्रारूप को खो देंगे।",
     yesChooseOtherJob: "हाँ, दूसरी नौकरी चुनें",
     noStayOnForm: "नहीं, इस प्रारूप पर रहें",
-    pleaseLoginToChat: "इस सुविधा तक पहुँचने के लिए कृपया चैट में लॉग इन करें।",
-    loginToChat: "चैट में लॉग इन करें",
   },
   pa: {
-    welcome: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ {username}! ਮੈਂ PGRKAM ਸਹਾਇਕ ਹਾਂ। ਮੈਂ ਤੁਹਾਨੂੰ ਅੰਗਰੇਜ਼ੀ, ਪੰਜਾਬੀ ਅਤੇ ਹਿੰਦੀ ਵਿੱਚ ਨੌਕਰੀਆਂ, ਸਿਖਲਾਈ ਪ੍ਰੋਗਰਾਮ ਅਤੇ ਕਰੀਅਰ ਮਾਰਗਦਰਸ਼ਨ ਲੱਭਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸਕਦਾ ਹੈ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹੈ?",
+    welcome: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ! ਮੈਂ PGRKAM ਸਹਾਇਕ ਹਾਂ। ਮੈਂ ਤੁਹਾਨੂੰ ਅੰਗਰੇਜ਼ੀ, ਪੰਜਾਬੀ ਅਤੇ ਹਿੰਦੀ ਵਿੱਚ ਨੌਕਰੀਆਂ, ਸਿਖਲਾਈ ਪ੍ਰੋਗਰਾਮ ਅਤੇ ਕਰੀਅਰ ਮਾਰਗਦਰਸ਼ਨ ਲੱਭਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸਕਦਾ ਹੈ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹੈ?",
+    welcomeUser: (username: string) => `ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ${username}! ਮੈਂ PGRKAM ਸਹਾਇਕ ਹਾਂ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹੈ?`, // Personalized welcome
+    pleaseLogin: "ਕਿਰਪਾ ਕਰਕੇ ਗੱਲਬਾਤ ਕਰਨ ਲਈ ਲੌਗਇਨ ਕਰੋ।", // Login prompt
     placeholder: "ਆਪਣਾ ਸੁਨੇਹਾ ਟਾਈਪ ਕਰੋ ਜਾਂ ਬੋਲਣ ਲਈ ਮਾਈਕ ਕਲਿੱਕ ਕਰੋ...",
     listening: "ਸੁਣ ਰਿਹਾ ਹੈ...",
     searchJobs: "ਮੈਨੂੰ ਤੁਹਾਡੇ ਲਈ ਕੁਝ ਸੰਬੰਧਿਤ ਮੌਕੇ ਮਿਲੇ:",
@@ -91,8 +94,6 @@ const translations = {
     confirmChangeMind: "ਕੀ ਤੁਸੀਂ ਵਾਪਸ ਨੌਕਰੀ ਸੂਚੀ ਪਰ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਸੀਂ ਵਰਤਮਾਨ ਆਵੇਦਨ ਪ੍ਰਾਰੂਪ ਨੂੰ ਖੋ ਦੇਂਗੇ।",
     yesChooseOtherJob: "ਹਾਂ, ਦੂਸਰੀ ਨੌਕਰੀ ਚੁਣੋ",
     noStayOnForm: "ਨਹੀਂ, ਇਸ ਪ੍ਰਾਰੂਪ ਪਰ ਰਹੋ",
-    pleaseLoginToChat: "ਇਸ ਵਿਸ਼ੇਸ਼ਤਾ ਤੱਕ ਪਹੁੰਚਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਚੈਟ ਵਿੱਚ ਲੌਗਇਨ ਕਰੋ।",
-    loginToChat: "ਚੈਟ ਵਿੱਚ ਲੌਗਇਨ ਕਰੋ",
   },
 };
 
@@ -112,16 +113,26 @@ export const ChatBot = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null); // Ref for audio element
 
   useEffect(() => {
-    if (isOpen && messages.length === 0 && user) { // Only add welcome message if logged in
-      addBotMessage(translations[language].welcome.replace('{username}', user.name));
-    } else if (isOpen && messages.length > 0) {
+    if (isOpen) {
+      if (user) {
+        // Logged-in user welcome
+        if (messages.length === 0 || messages[0].text === translations[language].pleaseLogin) {
+          addBotMessage(translations[language].welcomeUser(user.name));
+        }
+      } else {
+        // Logged-out user prompt to login
+        if (messages.length === 0 || !messages[0].text.includes(translations[language].pleaseLogin)) {
+          addBotMessage(translations[language].pleaseLogin);
+        }
+      }
+    } else if (isOpen && messages.length > 0) { // Keep existing logic for re-translation on language change/open
       // Re-translate existing messages when language changes or chatbot opens
       const retranslatedMessages = messages.map(msg => {
         if (msg.sender === 'bot') {
-          // For simplicity, re-translate only the welcome message or general responses.
-          // More complex messages (like job details) would require storing translation keys.
-          if (msg.text === translations['en'].welcome) {
-            return { ...msg, text: translations[language].welcome };
+          if (user && msg.text === translations['en'].welcome) {
+            return { ...msg, text: translations[language].welcomeUser(user.name) };
+          } else if (!user && msg.text.includes(translations['en'].welcome)) {
+            return { ...msg, text: translations[language].pleaseLogin };
           } else if (msg.text.includes(translations['en'].selectDomain)) {
             const categories = getAllCategories();
             const categoryOptions = categories.map((cat, index) => ({ label: `${index + 1}. ${cat}`, value: cat }));
@@ -215,13 +226,18 @@ export const ChatBot = () => {
     setMessages(prev => [...prev, newMessage]);
   };
 
-  const handleApplicationSubmit = (formData: { name: string; email: string; phone: string; resume: File | string | null; coverLetter: File | string | null }) => {
-    console.log("Application Submitted:", formData);
-    addBotMessage(translations[language].formSuccess);
-    setCurrentStage(ChatStage.INITIAL); // Reset chat after submission
-    setSelectedJob(null);
-    setSelectedCategory(null);
-    setSelectedJobType(null);
+  const handleApplicationSubmit = (success: boolean) => {
+    console.log("Application Submitted:", success);
+    if (success) {
+      addBotMessage(translations[language].formSuccess || "Thank you! Your application has been submitted successfully.");
+      // Reset to initial stage but keep the chat open
+      setCurrentStage(ChatStage.INITIAL);
+      setSelectedJob(null);
+      setSelectedCategory(null);
+      setSelectedJobType(null);
+    } else {
+      addBotMessage(translations[language].formError || "There was an error submitting your application. Please try again.");
+    }
   };
 
   const detectLanguage = (text: string): 'en' | 'hi' | 'pa' => {
@@ -560,53 +576,52 @@ export const ChatBot = () => {
           </div>
         </ScrollArea>
 
-        {/* Login Prompt or Input */}
-        {!user ? (
-          <div className="p-4 border-t text-center text-muted-foreground">
-            <p>{translations[language].pleaseLoginToChat}</p>
-            <Button onClick={() => window.location.href = '/login'} className="mt-2">{translations[language].loginToChat}</Button>
-          </div>
-        ) : (
+        {/* Input */}
+        {currentStage !== ChatStage.DISPLAYING_APPLY_FORM && user && (
           <div className="p-4 border-t">
             {isListening && (
               <div className="mb-2 text-sm text-primary font-medium animate-pulse">
                 {translations[language].listening}
               </div>
             )}
-            {currentStage !== ChatStage.DISPLAYING_APPLY_FORM && (
-              <div className="flex gap-2">
-                <Input
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder={translations[language].placeholder}
-                  className="flex-1"
-                />
-                <Button
-                  size="icon"
-                  onClick={toggleListening}
-                  variant={isListening ? "destructive" : "secondary"}
-                >
-                  {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
-                </Button>
-                <Button size="icon" onClick={handleSend}>
-                  <Send className="w-4 h-4" />
-                </Button>
-              </div>
-            )}
+            <div className="flex gap-2">
+              <Input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder={translations[language].placeholder}
+                className="flex-1"
+              />
+              <Button
+                size="icon"
+                onClick={toggleListening}
+                variant={isListening ? "destructive" : "secondary"}
+              >
+                {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+              </Button>
+              <Button size="icon" onClick={handleSend}>
+                <Send className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        )}
+        {!user && (
+          <div className="p-4 border-t text-center text-muted-foreground">
+            <p>{translations[language].pleaseLogin}</p>
+            <Link to="/login" className="text-primary hover:underline mt-2 inline-block">Login to Chat</Link>
+          </div>
+        )}
 
-            {currentStage === ChatStage.DISPLAYING_APPLY_FORM && selectedJob && (
-              <div className="p-4 border-t">
-                <Button
-                  variant="outline"
-                  onClick={() => setCurrentStage(ChatStage.LISTING_JOBS)}
-                  className="w-full mb-4"
-                >
-                  Back to Job Listings
-                </Button>
-                <JobApplicationForm jobTitle={selectedJob.title} jobId={selectedJob.id} onApplicationSubmit={handleApplicationSubmit} />
-              </div>
-            )}
+        {currentStage === ChatStage.DISPLAYING_APPLY_FORM && selectedJob && (
+          <div className="p-4 border-t">
+            <Button
+              variant="outline"
+              onClick={() => setCurrentStage(ChatStage.LISTING_JOBS)}
+              className="w-full mb-4"
+            >
+              Back to Job Listings
+            </Button>
+            <JobApplicationForm jobTitle={selectedJob.title} jobId={selectedJob.id} onApplicationSubmit={handleApplicationSubmit} />
           </div>
         )}
       </div>

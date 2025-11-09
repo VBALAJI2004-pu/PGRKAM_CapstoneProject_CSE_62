@@ -22,8 +22,8 @@ const JobApplicationPage: React.FC = () => {
   const handleApplicationSubmit = (success: boolean) => {
     console.log("Application Submitted from dedicated page:", success);
     if (success) {
-      alert(`Application for ${job.title} submitted successfully!`);
-      navigate('/'); // Redirect to home page on success
+      // Redirect is handled by JobApplicationForm component
+      // No need to navigate here as the form will redirect to /my-applications
     } else {
       alert(`Failed to submit application for ${job.title}. Please try again.`);
     }

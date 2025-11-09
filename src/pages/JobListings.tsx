@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { getJobsByCategory, jobsData } from '@/data/jobsData'; // Import jobsData
-import { MapPin, Building, Calendar, Briefcase } from 'lucide-react';
+import { MapPin, Building, Calendar, Briefcase, DollarSign, TrendingUp } from 'lucide-react';
 import React, { useContext } from 'react'; // Import useContext
 import { LanguageContext } from '../App'; // Import LanguageContext
 
@@ -124,127 +124,205 @@ const JobListings = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30">
       <Header />
       <SocialSidebar />
       <ChatBot />
 
-      <div className="flex-1 py-12 px-6 bg-background">
+      <div className="flex-1 py-12 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
-          <h1 className="text-4xl font-bold mb-8 text-center">
-            {query ? t.jobListings : getCategoryTitle(category)}
-          </h1>
+          {/* Hero Section */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              {query ? t.jobListings : getCategoryTitle(category)}
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+              Discover opportunities that match your skills and aspirations
+            </p>
+            <div className="flex items-center justify-center gap-6 text-sm text-gray-600">
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-green-500" />
+                <span className="font-semibold">{filteredJobs.length} Opportunities</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Building className="w-5 h-5 text-blue-500" />
+                <span>{governmentJobs.length} Government</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-purple-500" />
+                <span>{privateJobs.length} Private</span>
+              </div>
+            </div>
+          </div>
 
           <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)} className="mb-8">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-              <TabsTrigger value="government">
+            <TabsList className="grid w-full max-w-lg mx-auto grid-cols-2 bg-white/80 backdrop-blur-sm shadow-lg border-2 border-primary/20">
+              <TabsTrigger value="government" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-semibold">
+                <Building className="w-4 h-4 mr-2" />
                 {t.government} ({governmentJobs.length})
               </TabsTrigger>
-              <TabsTrigger value="private">
+              <TabsTrigger value="private" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-semibold">
+                <Briefcase className="w-4 h-4 mr-2" />
                 {t.private} ({privateJobs.length})
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="government" className="mt-8">
-              <div className="grid gap-6">
-                {governmentJobs.length > 0 ? (
-                  governmentJobs.map((job) => (
-                    <Card key={job.id} className="hover:shadow-lg transition-shadow">
-                      <CardHeader>
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <CardTitle className="text-xl mb-2">{job.title}</CardTitle>
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                              <Building className="w-4 h-4" />
-                              <span>{job.organization}</span>
+              <div className="overflow-x-auto pb-6 -mx-4 px-4">
+                <div className="flex gap-6 min-w-max">
+                  {governmentJobs.length > 0 ? (
+                    governmentJobs.map((job) => (
+                      <div key={job.id} className="flex-shrink-0 w-96">
+                        <Card className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50 bg-white/90 backdrop-blur-sm overflow-hidden h-full">
+                          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-blue-500 to-cyan-500"></div>
+                          <CardHeader className="pb-3">
+                            <div className="flex justify-between items-start mb-3">
+                              <Badge className="bg-blue-100 text-blue-800 border-blue-300 font-semibold">
+                                {t.government}
+                              </Badge>
+                              <Building className="w-5 h-5 text-primary opacity-60" />
                             </div>
-                          </div>
-                          <Badge className="bg-secondary">{t.government}</Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="grid md:grid-cols-2 gap-4 mb-4">
-                          <div className="flex items-center gap-2">
-                            <Briefcase className="w-4 h-4 text-primary" />
-                            <span className="text-sm"><strong>{t.qualification}</strong> {job.qualification}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-primary" />
-                            <span className="text-sm"><strong>{t.location}</strong> {job.location}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-primary" />
-                            <span className="text-sm"><strong>{t.lastDate}</strong> {job.lastDate}</span>
-                          </div>
-                          <div className="text-sm">
-                            <strong>{t.salary}</strong> {job.salary}
-                          </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground mb-4">{job.description}</p>
-                        <Link to={`/job/${job.id}`}>
-                          <Button className="bg-primary hover:bg-primary/90">
-                            {t.viewDetailsApply}
-                          </Button>
-                        </Link>
-                      </CardContent>
-                    </Card>
+                            <CardTitle className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                              {job.title}
+                            </CardTitle>
+                            <div className="flex items-center gap-2 text-gray-600">
+                              <Building className="w-4 h-4 text-primary" />
+                              <span className="text-sm font-medium truncate">{job.organization}</span>
+                            </div>
+                          </CardHeader>
+                          <CardContent className="space-y-4">
+                            <div className="space-y-3">
+                              <div className="flex items-start gap-2 text-sm">
+                                <Briefcase className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <span className="font-semibold text-gray-700">{t.qualification}</span>
+                                  <span className="text-gray-600 ml-1">{job.qualification}</span>
+                                </div>
+                              </div>
+                              <div className="flex items-start gap-2 text-sm">
+                                <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <span className="font-semibold text-gray-700">{t.location}</span>
+                                  <span className="text-gray-600 ml-1">{job.location}</span>
+                                </div>
+                              </div>
+                              <div className="flex items-start gap-2 text-sm">
+                                <DollarSign className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <span className="font-semibold text-gray-700">{t.salary}</span>
+                                  <span className="text-gray-600 ml-1">{job.salary}</span>
+                                </div>
+                              </div>
+                              <div className="flex items-start gap-2 text-sm">
+                                <Calendar className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <span className="font-semibold text-gray-700">{t.lastDate}</span>
+                                  <span className="text-gray-600 ml-1">{job.lastDate}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-sm text-gray-600 line-clamp-3 pt-2 border-t">{job.description}</p>
+                            <Link to={`/job/${job.id}`} className="block">
+                              <Button className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                                {t.viewDetailsApply}
+                              </Button>
+                            </Link>
+                          </CardContent>
+                        </Card>
+                    </div>
                   ))
                 ) : (
-                  <p className="text-center text-muted-foreground">{t.noJobsFound}</p>
+                  <div className="flex-shrink-0 w-full">
+                    <Card className="py-16 text-center">
+                      <CardContent>
+                        <Briefcase className="w-16 h-16 mx-auto text-gray-400 mb-4" />
+                        <p className="text-lg text-gray-600">{t.noJobsFound}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
                 )}
               </div>
-            </TabsContent>
+            </div>
+          </TabsContent>
 
-            <TabsContent value="private" className="mt-8">
-              <div className="grid gap-6">
-                {privateJobs.length > 0 ? (
-                  privateJobs.map((job) => (
-                    <Card key={job.id} className="hover:shadow-lg transition-shadow">
-                      <CardHeader>
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <CardTitle className="text-xl mb-2">{job.title}</CardTitle>
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                              <Building className="w-4 h-4" />
-                              <span>{job.organization}</span>
+          <TabsContent value="private" className="mt-8">
+              <div className="overflow-x-auto pb-6 -mx-4 px-4">
+                <div className="flex gap-6 min-w-max">
+                  {privateJobs.length > 0 ? (
+                    privateJobs.map((job) => (
+                      <div key={job.id} className="flex-shrink-0 w-96">
+                        <Card className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-purple-500/50 bg-white/90 backdrop-blur-sm overflow-hidden h-full">
+                          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500"></div>
+                          <CardHeader className="pb-3">
+                            <div className="flex justify-between items-start mb-3">
+                              <Badge className="bg-purple-100 text-purple-800 border-purple-300 font-semibold">
+                                {t.private}
+                              </Badge>
+                              <Briefcase className="w-5 h-5 text-purple-500 opacity-60" />
                             </div>
-                          </div>
-                          <Badge className="bg-accent">{t.private}</Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="grid md:grid-cols-2 gap-4 mb-4">
-                          <div className="flex items-center gap-2">
-                            <Briefcase className="w-4 h-4 text-primary" />
-                            <span className="text-sm"><strong>{t.qualification}</strong> {job.qualification}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-primary" />
-                            <span className="text-sm"><strong>{t.location}</strong> {job.location}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-primary" />
-                            <span className="text-sm"><strong>{t.lastDate}</strong> {job.lastDate}</span>
-                          </div>
-                          <div className="text-sm">
-                            <strong>{t.salary}</strong> {job.salary}
-                          </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground mb-4">{job.description}</p>
-                        <Link to={`/job/${job.id}`}>
-                          <Button className="bg-primary hover:bg-primary/90">
-                            {t.viewDetailsApply}
-                          </Button>
-                        </Link>
-                      </CardContent>
-                    </Card>
+                            <CardTitle className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+                              {job.title}
+                            </CardTitle>
+                            <div className="flex items-center gap-2 text-gray-600">
+                              <Building className="w-4 h-4 text-purple-500" />
+                              <span className="text-sm font-medium truncate">{job.organization}</span>
+                            </div>
+                          </CardHeader>
+                          <CardContent className="space-y-4">
+                            <div className="space-y-3">
+                              <div className="flex items-start gap-2 text-sm">
+                                <Briefcase className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <span className="font-semibold text-gray-700">{t.qualification}</span>
+                                  <span className="text-gray-600 ml-1">{job.qualification}</span>
+                                </div>
+                              </div>
+                              <div className="flex items-start gap-2 text-sm">
+                                <MapPin className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <span className="font-semibold text-gray-700">{t.location}</span>
+                                  <span className="text-gray-600 ml-1">{job.location}</span>
+                                </div>
+                              </div>
+                              <div className="flex items-start gap-2 text-sm">
+                                <DollarSign className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <span className="font-semibold text-gray-700">{t.salary}</span>
+                                  <span className="text-gray-600 ml-1">{job.salary}</span>
+                                </div>
+                              </div>
+                              <div className="flex items-start gap-2 text-sm">
+                                <Calendar className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <span className="font-semibold text-gray-700">{t.lastDate}</span>
+                                  <span className="text-gray-600 ml-1">{job.lastDate}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-sm text-gray-600 line-clamp-3 pt-2 border-t">{job.description}</p>
+                            <Link to={`/job/${job.id}`} className="block">
+                              <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-600/90 hover:to-pink-600/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                                {t.viewDetailsApply}
+                              </Button>
+                            </Link>
+                          </CardContent>
+                        </Card>
+                    </div>
                   ))
                 ) : (
-                  <p className="text-center text-muted-foreground">{t.noJobsFound}</p>
+                  <div className="flex-shrink-0 w-full">
+                    <Card className="py-16 text-center">
+                      <CardContent>
+                        <Briefcase className="w-16 h-16 mx-auto text-gray-400 mb-4" />
+                        <p className="text-lg text-gray-600">{t.noJobsFound}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
                 )}
               </div>
-            </TabsContent>
-          </Tabs>
+            </div>
+          </TabsContent>
+        </Tabs>
         </div>
       </div>
 

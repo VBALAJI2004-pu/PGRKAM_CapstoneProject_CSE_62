@@ -34,14 +34,6 @@ const headerTranslations = {
     marquee1: 'List of registered Recruiting Agents in Punjab-for sending abroad on work visa',
     marquee2: 'Beware of Fraudulent/Fake Employers',
     marquee3: 'New job opportunities available daily',
-    welcome: "Hello {username}! I'm PGRKAM Assistant. I can help you find jobs, training programs, and career guidance in English, Punjabi, and Hindi. How can I assist you today?",
-    placeholder: "Type your message or click mic to speak...",
-    formError: "There was an error submitting your application. Please try again.",
-    confirmChangeMind: "Are you sure you want to go back to the job listings? You will lose the current application form.",
-    yesChooseOtherJob: "Yes, choose another job",
-    noStayOnForm: "No, stay on this form",
-    pleaseLoginToChat: "Please login to chat to access this feature.",
-    loginToChat: "Login to Chat",
   },
   hi: {
     english: 'अंग्रेजी',
@@ -67,14 +59,6 @@ const headerTranslations = {
     marquee1: 'पंजाब में पंजीकृत भर्ती एजेंटों की सूची-काम वीजा पर विदेश भेजने के लिए',
     marquee2: 'धोखाधड़ी/नकली नियोक्ताओं से सावधान रहें',
     marquee3: 'हर दिन नई नौकरी के अवसर उपलब्ध हैं',
-    welcome: "नमस्ते {username}! मैं PGRKAM सहायक हूं। मैं आपको अंग्रेजी, पंजाबी और हिंदी में नौकरी, प्रशिक्षण कार्यक्रम और करियर मार्गदर्शन खोजने में मदद कर सकता हूं। आज मैं आपकी कैसे सहायता कर सकता हूं?",
-    placeholder: "अपना संदेश टाइप करें या बोलने के लिए माइक क्लिक करें...",
-    formError: "आपका आवेदन जमा करने में एक त्रुटि थी। कृपया पुनः प्रयास करें।",
-    confirmChangeMind: "क्या आप वापस नौकरी सूची पर जाना चाहते हैं? आप वर्तमान आवेदन प्रारूप को खो देंगे।",
-    yesChooseOtherJob: "हाँ, दूसरी नौकरी चुनें",
-    noStayOnForm: "नहीं, इस प्रारूप पर रहें",
-    pleaseLoginToChat: "इस सुविधा तक पहुँचने के लिए कृपया चैट में लॉग इन करें।",
-    loginToChat: "चैट में लॉग इन करें",
   },
   pa: {
     english: 'ਅੰਗਰੇਜ਼ੀ',
@@ -100,14 +84,6 @@ const headerTranslations = {
     marquee1: 'ਪੰਜਾਬ ਵਿੱਚ ਰਜਿਸਟਰਡ ਭਰਤੀ ਏਜੰਟਾਂ ਦੀ ਸੂਚੀ-ਕੰਮ ਵੀਜ਼ਾ \'ਤੇ ਵਿਦੇਸ਼ ਭੇਜਣ ਲਈ',
     marquee2: 'ਧੋਖਾਧੜੀ/ਨਕਲੀ ਨਿਯੋਜਕਾਂ ਤੋਂ ਸਾਵਧਾਨ ਰਹੋ',
     marquee3: 'ਹਰ ਦਿਨ ਨਵੀਆਂ ਨੌਕਰੀਆਂ ਦੇ ਮੌਕੇ ਉਪਲਬਧ ਹਨ',
-    welcome: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ {username}! ਮੈਂ PGRKAM ਸਹਾਇਕ ਹਾਂ। ਮੈਂ ਤੁਹਾਨੂੰ ਅੰਗਰੇਜ਼ੀ, ਪੰਜਾਬੀ ਅਤੇ ਹਿੰਦੀ ਵਿੱਚ ਨੌਕਰੀਆਂ, ਸਿਖਲਾਈ ਪ੍ਰੋਗਰਾਮ ਅਤੇ ਕਰੀਅਰ ਮਾਰਗਦਰਸ਼ਨ ਲੱਭਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸਕਦਾ ਹੈ। ਅੱਜ ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹੈ?",
-    placeholder: "ਆਪਣਾ ਸੁਨੇਹਾ ਟਾਈਪ ਕਰੋ ਜਾਂ ਬੋਲਣ ਲਈ ਮਾਈਕ ਕਲਿੱਕ ਕਰੋ...",
-    formError: "ਤੁਹਾਡੀ ਅਰਜ਼ੀ ਜਮ੍ਹਾਂ ਕਰਨ ਵਿੱਚ ਇੱਕ ਗਲਤੀ ਆਈ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
-    confirmChangeMind: "ਕੀ ਤੁਸੀਂ ਵਾਪਸ ਨੌਕਰੀ ਸੂਚੀ ਪਰ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਸੀਂ ਵਰਤਮਾਨ ਆਵੇਦਨ ਪ੍ਰਾਰੂਪ ਨੂੰ ਖੋ ਦੇਂਗੇ।",
-    yesChooseOtherJob: "ਹਾਂ, ਦੂਸਰੀ ਨੌਕਰੀ ਚੁਣੋ",
-    noStayOnForm: "ਨਹੀਂ, ਇਸ ਪ੍ਰਾਰੂਪ ਪਰ ਰਹੋ",
-    pleaseLoginToChat: "ਇਸ ਵਿਸ਼ੇਸ਼ਤਾ ਤੱਕ ਪਹੁੰਚਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਚੈਟ ਵਿੱਚ ਲੌਗਇਨ ਕਰੋ।",
-    loginToChat: "ਚੈਟ ਵਿੱਚ ਲੌਗਇਨ ਕਰੋ",
   },
 };
 
@@ -189,8 +165,8 @@ export const Header = () => {
       >
         {isScreenReaderActive ? t.screenReaderOn : t.screenReaderOff}
       </div>
-      {/* Top Orange Bar */}
-      <div className="bg-primary text-primary-foreground py-2 px-6 flex justify-between items-center">
+      {/* Top Orange Bar - Sticky */}
+      <div className="sticky top-0 z-50 bg-primary text-primary-foreground py-2 px-6 flex justify-between items-center shadow-md">
         <div className="flex items-center gap-6 text-sm">
           <button onClick={() => setLanguage('en')} className={`hover:underline ${language === 'en' ? 'font-bold' : ''}`}>{t.english}</button>
           <button onClick={() => setLanguage('pa')} className={`hover:underline ${language === 'pa' ? 'font-bold' : ''}`}>{t.punjabi}</button>
@@ -239,8 +215,8 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Main Header */}
-      <div className="bg-white border-b-2 border-secondary py-4 px-6">
+      {/* Main Header - Sticky */}
+      <div className="sticky top-[42px] z-40 bg-white border-b-2 border-secondary py-4 px-6 shadow-sm">
         <div className={cn("container mx-auto flex items-center justify-between")}>
           <div className="flex items-center gap-4">
             <img src={logo} alt="PGRKAM Logo" className="w-20 h-20" />
@@ -263,13 +239,18 @@ export const Header = () => {
             <Link to="/contact" className={`text-foreground font-semibold hover:text-primary transition-colors ${fontSizeClasses[fontSize]}`}>
               {t.contactUs}
             </Link>
+            {!user && (
+              <Link to="/login" className={`text-foreground font-semibold hover:text-primary transition-colors ${fontSizeClasses[fontSize]}`}>
+                {t.login}
+              </Link>
+            )}
           </nav>
         </div>
       </div>
 
       {/* Green Scrolling Info Bar */}
       {!hideMarquee && (
-        <div className="bg-secondary text-secondary-foreground py-2 px-6 overflow-hidden">
+        <div className="sticky top-[130px] z-30 bg-secondary text-secondary-foreground py-2 px-6 overflow-hidden shadow-sm">
           <div className="container mx-auto">
             <div className="animate-marquee whitespace-nowrap text-sm">
               <span className={`mx-4 ${fontSizeClasses[fontSize]}`}>{t.marquee1}</span>
